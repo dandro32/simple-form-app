@@ -1,8 +1,7 @@
 import React from "react";
 import {Field, reduxForm } from "redux-form";
 import {required, email} from "./../utils/validation-rules";
-import moment from 'moment';
-import DatePicker from 'react-datepicker';
+import RenderDatePicker from './render-date-picker'
 
 const renderField = ({ input, label, type, meta: { touched, error, warning } }) => (
     <div className="input-group col-md-6">
@@ -12,15 +11,6 @@ const renderField = ({ input, label, type, meta: { touched, error, warning } }) 
     </div>
 
 )
-
-const renderDatePicker = ({input, label, defaultValue, meta: {touched, error} }) => (
-    <div  className="input-group col-md-6">
-        <label htmlFor={label} className="control-label">{label}</label>
-        <DatePicker {...input} dateForm="DD/MM/YYYY" selected={input.value ? moment(input.value) : null} />
-        {touched && error && <div className="alert alert-warning" role="alert"> {error}</div>}
-    </div>
-);
-
 
 const FormTemplate = (props) => {
     const { handleSubmit, pristine, reset, submitting } = props
@@ -39,7 +29,7 @@ const FormTemplate = (props) => {
                    validate={[required, email]}
             />
             <Field name="date"
-                   component={renderDatePicker} label="Date"
+            component={RenderDatePicker} label="Date"
                    validate={required}
             />
 

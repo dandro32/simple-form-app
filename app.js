@@ -1,4 +1,5 @@
 var express = require('express');
+var mongoose = require('mongoose');
 var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
@@ -7,8 +8,9 @@ var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
 var users = require('./routes/users');
-
+var submit = require('./routes/submit');
 var app = express();
+mongoose.connect('mongodb://daniel:test305jdfww@ds251827.mlab.com:51827/simple-form-app');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,8 +24,19 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Credentials', 'true');
+    res.setHeader('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT,DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers, Origin,Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers');
+    res.setHeader('Cache-Control', 'no-cache');
+    next();
+});
+
+
 app.use('/', index);
 app.use('/users', users);
+app.use('/submit', submit);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -31,6 +44,8 @@ app.use(function(req, res, next) {
   err.status = 404;
   next(err);
 });
+
+
 
 // error handler
 app.use(function(err, req, res, next) {

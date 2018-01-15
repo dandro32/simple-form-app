@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "axios": "^0.17.1",
     "bootstrap": "^3.3.7",
     "moment": "^2.20.1",
     "react": "^16.2.0",
@@ -25,5 +26,5 @@
     "enzyme": "^3.3.0",
     "enzyme-adapter-react-16": "^1.1.1"
   },
-  "proxy" : "http://localhost:3005"
+  "proxy": "http://localhost:3005"
 }

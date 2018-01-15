@@ -1,6 +1,11 @@
-const sleep = ms => new Promise(resolve => setTimeout(resolve, ms));
+import axios from 'axios';
 
-export default (async function showResults(values) {
-    await sleep(1500); // simulate server latency
-    window.alert(`You submitted:\n\n${JSON.stringify(values, null, 2)}`);
+export default (async function submitData(values) {
+    console.log(values)
+    axios.post('http://localhost:3005/submit', values)
+        .then(res => {
+            console.log(res)
+        }).catch(err => {
+        console.error(err);
+    });
 });
