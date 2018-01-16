@@ -16,24 +16,16 @@ class RenderDatePicker extends React.Component {
     }
 
     render() {
-        const {
-            input,label,
-            meta: {touched, error}
-        } = this.props
+        const {input,label, meta: {touched, error}} = this.props
 
-        return   <
-        div  className="input-group col-md-6">
-            <label htmlFor={label} className="control-label">{label}</label>
-            <DatePicker
-        {...input}
-        dateFormat="YYYY-MM-DD"
-        selected={this.state.startDate}
-        onChange={this.handleChange}
-        />
-        {touched && error && <div className="alert alert-warning" role="alert"> {error}</div>}
+        return (
+            <div  className="input-group col-md-6">
+                <label htmlFor={label} className="control-label">{label}</label>
+                <DatePicker {...input} dateFormat="YYYY-MM-DD" selected={this.state.startDate} onChange={this.handleChange} />
+                {touched && error && <div className="alert alert-warning" role="alert"> {error}</div>}
             </div>
+        );
     }
 }
-
 
 export default RenderDatePicker;

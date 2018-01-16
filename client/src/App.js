@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Provider } from "react-redux";
-import FormTemplate from './form/form-templates';
-import submitData from './service/form-submit-service';
+import FormTemplate from './components/form';
+import { submitData } from './service/services';
 import { store } from './utils/store';
 import './App.css';
 import 'react-datepicker/dist/react-datepicker.css';
