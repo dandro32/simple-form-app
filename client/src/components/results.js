@@ -18,7 +18,6 @@ class Results extends React.Component {
     }
 
     getResults() {
-        console.log(this.props);
         getData().then(data=>{
             this.setState({
                 result: data

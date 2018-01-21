@@ -1,6 +1,4 @@
 import {required, email} from "./validation-rules";
-//import React from 'react';
-
 
 it('should validate correct email', () => {
     const properEmail = "test@test.com"
